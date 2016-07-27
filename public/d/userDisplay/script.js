@@ -25,8 +25,6 @@ angular.module('userdisplayDirective', [])
       {
         message = "User not found";
       }
-      else
-        console.log("error with user directive");
     });
   }
 

@@ -104,14 +104,6 @@ profileApp.controller('profilebyIdControllerMain', ['$scope', '$http', 'growl','
   
 }])
 
-/*
-profileApp.controller('MainCtrl', function($scope, ngDialog) {
-    $scope.clickToOpen = function () {
-        ngDialog.open({ template: 'templateId' });
-    };
-});
-*/
-
 function DialogController($scope, $mdDialog, users) {
 
   $scope.usersdata=users;

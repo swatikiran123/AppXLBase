@@ -1,5 +1,3 @@
-
-
 angular.module('userAutoDirective', [])
 .controller('userAutoDirectiveControllerMain', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 
@@ -9,12 +7,8 @@ angular.module('userAutoDirective', [])
     $scope.showFlag = "user";
 
   $scope.getUser = function(){
-        console.log($scope.userId);
-    console.log($scope.userEmail);
     var url= "";
     if($scope.userId!="" && $scope.userId!=undefined){
-      // $scope.showFlag = "none";
-      // return;
       url='/api/v1/secure/admin/users/' + $scope.userId;
     }
     
@@ -44,21 +38,10 @@ angular.module('userAutoDirective', [])
     }
 
     $http.get(url).success(function(response) {
-
-      if($scope.userType == response.association){
         $scope.userModel = response;
         $scope.userId = response._id;
         $scope.userEmail = response.email;
         $scope.showFlag = "user";
-      }
-
-      else{
-        $scope.showFlag = "noUser";
-        $scope.message = "User is not an organization employee!!";
-        $timeout(function () { $scope.message = ''; }, 3000);
-
-      }
-
     })
     .error(function(response, status){
       $scope.showFlag = "noUser";
@@ -77,8 +60,6 @@ angular.module('userAutoDirective', [])
   } // end of getUser method
 
   $scope.getUser1 = function(){
-    // console.log($scope.userId1);
-    // console.log($scope.userEmail1);
     $scope.userId = $scope.userId1;
     $scope.userEmail = $scope.userEmail1;
     var url= "";
@@ -112,13 +93,10 @@ angular.module('userAutoDirective', [])
     }
 
     $http.get(url).success(function(response) {
-
-      if($scope.userType == response.association){
         $scope.userModel = response;
         $scope.userId = response._id;
         $scope.userEmail = response.email;
         $scope.showFlag = "user";
-      }
     })
     .error(function(response, status){
       $scope.showFlag = "noUser";
@@ -136,32 +114,44 @@ angular.module('userAutoDirective', [])
     });
   } // end of getUser method  
 
+    $scope.inputChanged = function(str) {
+       $scope.console10 = str;
+       if($scope.console10 == null || $scope.console10 == undefined || $scope.console10 == '')
+       {
+        $scope.userModel = null;
+        $scope.userEmail = null;
+        $scope.userId = null;
+       }
+    }
 
-   $scope.inputChanged = function(str) {
-      $scope.console10 = str;
-      console.log($scope.console10);
+    $scope.clearInput = function (id) {
+      if (id) {
+        $scope.$broadcast('angucomplete-alt:clearInput', id);
+        $scope.userModel = null;
+        $scope.userEmail = null;
+        $scope.userId = null;
+      }
+      else{
+        $scope.$broadcast('angucomplete-alt:clearInput');
+      }
     }
 
     $scope.selectedUser = function(selected) {
       if (selected) {
-        // window.alert('You have selected ' + selected.originalObject.email);
         $scope.userEmail1 = selected.originalObject.email;
         $scope.userId1 = selected.originalObject.userid;
         $scope.getUser1();
       } else {
-        // console.log('cleared');
       }
     };
   if($scope.switchMode == 'edit')
   {  
    if($scope.userId)
    { 
-	 $scope.getUser(); // autoload data
+   $scope.getUser(); // autoload data
  }
  $scope.showFlag = "user";
 }
-
-  //ToDo: User Picker not working with inline editing.
 }])
 
 .directive('userauto', function() {
@@ -195,10 +185,7 @@ angular.module('userAutoDirective', [])
         if(viewmode === "medium"){
           return "/public/d/autoComplete/templates/mediumpanel.html";
         }
-
       }
     }
-
-
   };
 });

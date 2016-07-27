@@ -25,7 +25,6 @@ module.exports = function(app, passport) {
 
     // Token SECTION =========================
     app.get('/token', isLoggedIn, function(req, res) {
-      //console.log("Auth token: " + req.user.token.token);
       res.status(200).send(req.user);
     });
 

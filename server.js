@@ -4,7 +4,7 @@
 // get all the tools we need
 var express  = require('express');
 var expressLayouts = require('express-ejs-layouts')
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var app      = express();
 var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
@@ -30,7 +30,7 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(favicon(__dirname + '/public/favicon.ico'));
+//app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.set('layout', 'layouts/mmain')
@@ -48,18 +48,6 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-//multer for storing the images locally
-// app.use(multer({
-//  // dest: './uploads/',
-//   dest: './public/uploads/profilePics',
-//  rename:function(fieldname,filename){
-//     return Date.now() + '.jpg';
-//   },
-//   onFileUploadComplete: function(file) {
-//   console.log(file.fieldname + ' uploaded to the ' + file.path);
-// }
-// }));
-
 //multer for storing images locally and dynamically based on the entity value.
 app.use('/api/v1/upload/:entity',multer({
   dest: './public/uploads/',
@@ -68,7 +56,6 @@ app.use('/api/v1/upload/:entity',multer({
   },
   changeDest: function(dest, req, res) {
     console.log(req.params.entity);
-    dest += req.params.entity;
     return dest;
   },
   onFileUploadComplete: function(file) {
@@ -81,15 +68,14 @@ app.use('/api/v1/multiupload/:entity',multer({
   dest: './public/uploads/',
   rename:function(fieldname,filename){
    return filename + '_' + Date.now();
-  },
-  changeDest: function(dest, req, res) {
-    console.log(req.params.entity);
-    dest += req.params.entity;
-    return dest;
-  },
-  onFileUploadComplete: function(file) {
-    console.log(file.fieldname + ' uploaded to the ' + file.path);
-  }
+ },
+ changeDest: function(dest, req, res) {
+  console.log(req.params.entity);
+  return dest;
+},
+onFileUploadComplete: function(file) {
+  console.log(file.fieldname + ' uploaded to the ' + file.path);
+}
 }));
 // routes ======================================================================
 require('./routes/main')(app, passport);

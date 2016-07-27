@@ -18,7 +18,6 @@ assetBuilder.getAssets = getAssets;
 module.exports = assetBuilder;
 
 function getAssets(type, handles){
-	////logger.writeLine("assets by handle " + handle);
 	var mode = config.get('assets.mode');
 	var assetType = appAssets;
 	var assetMap = appAssetMap;
@@ -42,7 +41,6 @@ function getAssets(type, handles){
 
 	var script = [];
 	_.each(handles.split(','), function(handle){
-		//logger.writeJson(util.formatString("%s with handle %s", type, handle),'debug',1);
 
 		assetMap.assetMap[handle].forEach(function(map){
 
@@ -54,11 +52,9 @@ function getAssets(type, handles){
 
 			if(assetType.assets[map][mode] !== undefined){
 				assetType.assets[map][mode].forEach(function(path){
-					//logger.writeJson(path,'',1);
 					var file = path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf("."));
 					var ext = path.substring(path.lastIndexOf(".") + 1);
 					var scr = "";
-						//logger.writeJson(ext,'',2);
 						if("css".compare(ext)){
 							scr = util.formatString("<link rel='stylesheet' href='%s' />", path);
 						}
@@ -71,7 +67,5 @@ function getAssets(type, handles){
 			}
 		});
 	});
-	// logger.writeLine("scripts for handle: " + handles, 'debug', 1);
-	// logger.writeLine(script, 'debug', 1);
 	return script.join(" ");
 }

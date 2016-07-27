@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('cviz-admin', ['users','confirmDialogDirective','tooltips','userprofileDirective','userDirective','userdisplayDirective',
-	'appFilters','datePicker','richTextDirective','dropzone','fileuploadDirective','userAutoDirective','angucomplete-alt']);
+angular.module('appXL-admin', ['users','confirmDialogDirective','tooltips','userprofileDirective','userDirective','userdisplayDirective'
+	,'datePicker','richTextDirective','dropzone','fileuploadDirective','userAutoDirective','angucomplete-alt']);
 
-angular.module('cviz-profile',
-	['userprofileDirective','userDirective','userdisplayDirective',
-	'appFilters',
-	'datePicker','dropzone','fileuploadDirective',
+angular.module('appXL-profile',
+	['userprofileDirective','userDirective','userdisplayDirective','datePicker','dropzone','fileuploadDirective',
 	'profile']);

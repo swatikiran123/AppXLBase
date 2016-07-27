@@ -1,19 +1,12 @@
 angular.module('fileuploadDirective', [])
 .controller('fileuploadDirectiveControllerMain', ['$scope', '$http','$mdDialog', '$mdMedia','Upload','growl', function($scope, $http, $mdDialog, $mdMedia,Upload,growl) {
 
-  //console.log($scope.folderType);
   var folderType =$scope.folderType;
-  console.log(folderType);
-  //upload the file(url of image) to database with ngFileupload and multer
   if($scope.folderType === folderType)
   {
   $scope.upload = function (dataUrl) {
-    console.log('Upload function');
-    // console.log(dataUrl);
      var filedata = Upload.dataUrltoBlob(dataUrl);
-     //console.log((filedata.size)/1048576);
      var filesize = (filedata.size)/1048576 //file size in MB
-     console.log(filesize);
      if (filesize > 0.6 && filesize < 1)
      {
      Upload.upload({
@@ -23,18 +16,15 @@ angular.module('fileuploadDirective', [])
       },
     }).then(function (response) {
       $scope.result = response.data;
-      console.log($scope.result);
       $mdDialog.hide();
     });
      }
      else if (filesize > 1)
      {
-      console.log('File size too big to handle');
       window.alert("Cropped Image too big.Please crop image in a nice dimension.");
      }
      else
      {
-      console.log('File size too small to handle');
       window.alert("Cropped Image too small.Please crop image in a nice dimension.");
      }
   };
@@ -43,7 +33,6 @@ angular.module('fileuploadDirective', [])
   $scope.status = '  ';
 
   $scope.showfileUploadButton = function(ev) {
-   // console.log(folderType);
     $mdDialog.show({
       controller: DialogUploadCtrlFile,
       templateUrl: '/public/d/fileUpload/templates/fileUploadDialog.html',

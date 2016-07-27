@@ -34,7 +34,6 @@ var error = {}
 module.exports = function(app, passport) {
   app.use(processError);
   app.use(logErrors);
-  //app.use(clientErrorHandler);
   app.use(catchRestAll);
 }
 
@@ -43,17 +42,6 @@ function logErrors(err, req, res, next) {
   console.error(error);
   next(err);
 }
-
-
-/*function clientErrorHandler(err, req, res, next) {
-  console.log('clientErrorHandler working');
-  if (req.xhr) {
-    console.log('req.xhr');
-    res.status(500).send({ error: 'Something failed!' });
-  } else {
-    next(err);
-  }
-}*/
 
 function processError(err, req, res, next){
   if (config.get("env") === 'development') {

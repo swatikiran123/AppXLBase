@@ -1,5 +1,3 @@
-
-
 angular.module('userprofileDirective', [])
 .controller('userprofileDirectiveControllerMain', ['$scope', '$http', '$mdDialog', '$mdMedia','Upload','growl', function($scope, $http, $mdDialog, $mdMedia,Upload,growl) {
   $scope.entity = "entity";
@@ -60,16 +58,16 @@ angular.module('userprofileDirective', [])
     else
     {
       $scope.showFlag = "noUser";
-        if(status===404)
-        {
-          message = "User not found";
-        }
-        else
-        {
+      if(status===404)
+      {
+        message = "User not found";
+      }
+      else
+      {
         console.log("Error with the directive");
-        }
+      }
     }
-}
+  }
 
   $scope.editprofile = function (user,id) {
     console.log(user);
@@ -97,7 +95,7 @@ angular.module('userprofileDirective', [])
       users.avatar = imagepath;
       console.log(users.avatar);
       $http.put('/api/v1/secure/admin/users/'+ users._id, users).success(function(response1) {
-          $mdDialog.hide();
+        $mdDialog.hide();
       });
 
     });
@@ -135,7 +133,7 @@ angular.module('userprofileDirective', [])
       userModel: "=userModel",
       userId: "=userId",
       userEmail: "=userEmail",
-   }
+    }
   };
 });
 

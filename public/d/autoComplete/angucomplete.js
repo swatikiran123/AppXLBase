@@ -192,7 +192,6 @@ angular.module('angucomplete', [] )
                 $scope.selectedObject = result;
                 $scope.showDropdown = false;
                 $scope.results = [];
-                //$scope.$apply();
             }
 
             var inputField = elem.find('input');

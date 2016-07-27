@@ -99,13 +99,6 @@ function getAllUsers(req,res){
     console.log(req.params);
     var name = req.param('query');
     var query = {jobTitle: new RegExp(name, 'i')};
-    // var query = {
-    //  $or: [
-    //  { 'name.first' : new RegExp(name, 'i') },
-    //  { 'name.last' : new RegExp(name, 'i') },
-    //  { 'email' : new RegExp(name, 'i') }
-    //  ]
-    // }
     var maxRecs = req.param('maxRecs');
     var fields = req.param('fields');
     var sort = req.param('sort');
@@ -127,7 +120,6 @@ function getAllUsers(req,res){
 function getWithQuery(req,res){
     console.log(req.params);
     var name = req.param('query');
-    // var query = {email: new RegExp(name, 'i')};
     var query = {
      $or: [
      { 'name.first' : new RegExp(name, 'i') },

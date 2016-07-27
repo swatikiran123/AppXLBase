@@ -1,6 +1,3 @@
-
-
-
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -8,60 +5,55 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                 <div  class="headerwel">
-<br>
+                    <br>
                     <img src="/public/assets/g/imgs/csclogo.png" class="logo">
                     <p>welcomes you !</p>
                 </div>
 
                 <div class="details">
                  <video id="welcome"  controls  autoplay muted>
-                        <source src="/public/uploads/video/message.mp4" type="video/mp4">
+                    <source src="/public/uploads/video/message.mp4" type="video/mp4">
 
 
-                      </video>
-                      <br>
-                      <br>
-              <p class="text">Enterprise mobility management (EMM) is the set of people, processes and technology focused on managing mobile devices, wireless networks, and other mobile computing services in a business context. As more workers have bought smartphone and tablet computing devices and have sought support for using these devices in the workplace, EMM has become increasingly significant.
+                    </video>
+                    <br>
+                    <br>
+                    <p class="text">Enterprise mobility management (EMM) is the set of people, processes and technology focused on managing mobile devices, wireless networks, and other mobile computing services in a business context. As more workers have bought smartphone and tablet computing devices and have sought support for using these devices in the workplace, EMM has become increasingly significant.
 
-                       </p>
-                            <hr>
+                    </p>
+                    <hr>
 
-                            <div class="profile">
-                                <div class="pull-left">
-                                    <img src="/public/assets/g/imgs/avatar.jpg" class="img-thumbnail userpic"> 
-                                </div>
-                                <div class="panelpdmd">
-                                    <div class="text-highlight">jon brace</div>
-                                    <div class="text-xsmall">jonb@gmail.com</div>
-                                    <div class="text-xsmall">CEO </div>
-                                    <div class="text-xsmall">csc</div>
-
-                                    
-                                </div>       
-                            </div>
-
+                    <div class="profile">
+                        <div class="pull-left">
+                            <img src="/public/assets/g/imgs/avatar.jpg" class="img-thumbnail userpic"> 
                         </div>
+                        <div class="panelpdmd">
+                            <div class="text-highlight">jon brace</div>
+                            <div class="text-xsmall">jonb@gmail.com</div>
+                            <div class="text-xsmall">CEO </div>
+                            <div class="text-xsmall">csc</div>
 
+                            
+                        </div>       
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">continue&nbsp;<i class="fa fa-angle-right"></i></button>
-                    </div>
-                     
+
                 </div>
+
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">continue&nbsp;<i class="fa fa-angle-right"></i></button>
+            </div>
+            
         </div>
     </div>
 </div>
-  <script type="text/javascript">
+</div>
+</div>
+<script type="text/javascript">
 $('#videoModal').on('hidden.bs.modal', function(e) {    
     
     var $if = $(e.delegateTarget).find('video');
     var src = $if.attr("src");
     $if.attr("src", '/public/uploads/video/message.mp4');
     $if.attr("src", src);
-});</script><!--script>
-$('.close').click(function () {
-    alert('hellow');
-  $('#videoModal').hide();
-  $('#videoModal video').attr("src", jQuery("#videoModal video").attr("src"));
-})</script-->
+});</script>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mviz-main', [
+angular.module('mappXL-main', [
 	'appFilters',
 	'home','locator','header','scroll','userViewDirective'
 ]);

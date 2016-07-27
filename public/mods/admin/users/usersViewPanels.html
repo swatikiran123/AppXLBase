@@ -1,7 +1,7 @@
 <div class="container">
   <div class="page-header">
-   Facts
-    <div class="sub-header">list of facts</div>
+   Users
+    <div class="sub-header">list of Users</div>
   </div>
 
   <div class="container">
@@ -12,7 +12,7 @@
     <div ng-include src="'/public/mods/admin/users/partials/sortSearch.html'"></div>
     </div>
     <div class="pnbdr panel panel-primary">
-      <!--div class="panel-heading">visits panels view</div--><div class="searchpad">
+      <div class="searchpad">
       <div ng-repeat="user in userlist | filter: search |orderBy:orderByField:reverseSort">
         <div class="row">
 

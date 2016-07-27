@@ -1,10 +1,5 @@
-
-
 angular.module('userDirective', [])
 .controller('userDirectiveControllerMain', ['$scope', '$http', function($scope, $http) {
-
-  // console.log($scope.switchMode);
-  // console.log($scope.userType);
 
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
@@ -14,32 +9,26 @@ angular.module('userDirective', [])
   $scope.getUser = function(){
     var url= "";
     if($scope.userId!="" && $scope.userId!=undefined){
-      // $scope.showFlag = "none";
-      // return;
       url='/api/v1/secure/admin/users/' + $scope.userId;
     }
     
     if ($scope.userEmail!="" && $scope.userEmail!=undefined) {
       url='/api/v1/secure/admin/users/email/' + $scope.userEmail;
     }
-    // else{
-    //     message = "Invalid User Id/email";
-    //     return;
-    // }
 
     $http.get(url).success(function(response) {
 
-    if($scope.userType == response.association){
-      $scope.userModel = response;
-      $scope.userId = response._id;
-      $scope.userEmail = response.email;
-      $scope.showFlag = "user";
-    }
+      if(response){
+        $scope.userModel = response;
+        $scope.userId = response._id;
+        $scope.userEmail = response.email;
+        $scope.showFlag = "user";
+      }
 
-    else{
-      $scope.showFlag = "noUser";
-      message = "User not found";
-    }
+      else{
+        $scope.showFlag = "noUser";
+        message = "User not found";
+      }
 
     })
     .error(function(response, status){
@@ -48,8 +37,6 @@ angular.module('userDirective', [])
       {
         message = "User not found";
       }
-      else
-        console.log("error with user directive");
     });
   } // end of getUser method
   
@@ -58,11 +45,9 @@ angular.module('userDirective', [])
    if($scope.userId)
    { 
 	 $scope.getUser(); // autoload data
-   }
-   $scope.showFlag = "user";
-  }
-
-  //ToDo: User Picker not working with inline editing.
+ }
+ $scope.showFlag = "user";
+}
 }])
 
 .directive('user', function() {
@@ -82,22 +67,20 @@ angular.module('userDirective', [])
     {
       scope.getTemplate = function(){
 
-      var viewmode = scope.viewType.toLowerCase();
+        var viewmode = scope.viewType.toLowerCase();
 
-       if(viewmode === "small" && scope.userEmail!="")
-       {
-        return "/public/d/user/templates/smallpanel.html";
-      }
-      if(viewmode === "large"){
-        return "/public/d/user/templates/largepanel.html";
-      }
-      if(viewmode === "medium"){
-        return "/public/d/user/templates/mediumpanel.html";
-      }
+        if(viewmode === "small" && scope.userEmail!="")
+        {
+          return "/public/d/user/templates/smallpanel.html";
+        }
+        if(viewmode === "large"){
+          return "/public/d/user/templates/largepanel.html";
+        }
+        if(viewmode === "medium"){
+          return "/public/d/user/templates/mediumpanel.html";
+        }
 
+      }
     }
-  }
-
-
-};
+  };
 });

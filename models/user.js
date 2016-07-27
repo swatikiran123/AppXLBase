@@ -32,9 +32,7 @@ var userSchema = mongoose.Schema({
     avatar           : String,
     summary          : String,
     jobTitle         : String,
-    organization     : String,
-		orgRef					 : { type: Schema.Types.ObjectId, ref: 'client' },
-		association			 : {type: String, enum: ['employee', 'partner', 'customer', 'contractor']},
+    organization     : { type: String, trim: true },
     socialProfile    : [{
       handle         : String,
       network        : String
@@ -82,22 +80,9 @@ var userSchema = mongoose.Schema({
 userSchema.pre('save', function(callback) {
     var user = this;
 
-    // Break out if the password hasn't changed
-    //if (!user.isModified('password')) return callback();
     this.token = genToken();
     console.log("token updated");
     callback();
-
-  // Password changed so we need to hash it
-/*  bcrypt.genSalt(5, function(err, salt) {
-    if (err) return callback(err);
-
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return callback(err);
-      user.password = hash;
-      callback();
-    });
-  });*/
 });
 
 userSchema.post('init', function(doc) {
@@ -107,10 +92,7 @@ userSchema.post('init', function(doc) {
 });
 
 userSchema.post('find', function(result) {
-  //console.log(this instanceof mongoose.Query); // true
-  // prints returned documents
   console.log('find() returned ' + JSON.stringify(result));
-  // prints number of milliseconds the query took
   console.log('find() took ' + (Date.now() - this.start) + ' millis');
 });
 

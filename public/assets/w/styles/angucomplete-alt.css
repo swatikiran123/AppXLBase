@@ -12,9 +12,6 @@
     cursor: pointer;
     z-index: 9999;
     position: absolute;
-    /*top: 32px;
-    left: 0px;
-    */
     margin-top: +30px;
     background-color: #ffffff;
 }
@@ -29,9 +26,6 @@
     cursor: pointer;
     z-index: 9999;
     position: absolute;
-    /*top: 32px;
-    left: 0px;
-    */
     margin-top: -6px;
     background-color: #ffffff;
 }

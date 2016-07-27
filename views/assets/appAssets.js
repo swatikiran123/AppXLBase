@@ -129,9 +129,7 @@ module.exports = {
 	"m-common":{
 		"dev":[
 			"/public/assets/m/css/font.css",
-			"/public/assets/m/css/style.css",
-			"/public/assets/m/css/header.css",
-			//"/public/assets/m/css/userview.css"
+			"/public/assets/m/css/style.css"			
 		],
 		"prod":[
 
@@ -144,8 +142,7 @@ module.exports = {
 			"/public/m/home/home.js",
 			"/public/m/home/homeCtrl.js",
 			"/public/d/geoLocation/locator.js",
-			"/public/d/geoLocation/locator-tpl.js",
-			"/public/assets/m/css/welcome.css"
+			"/public/d/geoLocation/locator-tpl.js"
 		]
 
 	}

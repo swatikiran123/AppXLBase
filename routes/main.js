@@ -18,10 +18,10 @@ module.exports = function(app, passport) {
 		}
 
     res.locals={
-      appTitle: "Visit Portal",
+      appTitle: "AppXL Portal",
       pageTitle: "main",
       author: "Sankar Vema",
-      description: "Customer Visit Management Portal",
+      description: "AppXL Portal",
       user: req.user,
       app_info: appInfoServ.info(),
 			appAssets: '',
